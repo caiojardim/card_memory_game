@@ -43,12 +43,14 @@ console.log(shuffledNumbers)
 
 shuffledNumbers.forEach((value, index) => {
     var element = document.createElement('div')
-    element.innerHTML = emojiList[value]
+    element.innerHTML = `<span class='hidden'>${emojiList[value]}</span>`
     element.id = index
     element.className = 'card'
     gameBoard.appendChild(element)
     console.log(index)
 })
+
+
 
 
 
