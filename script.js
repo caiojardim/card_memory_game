@@ -34,18 +34,21 @@ for(let i = 0; i < 40; i++) {
     numbers.push(number)
 }
 
+let shuffledNumbers = numbers
+  .map(value => ({ value, sort: Math.random() }))
+  .sort((a, b) => a.sort - b.sort)
+  .map(({ value }) => value)
 
-console.log(numbers)
+console.log(shuffledNumbers)
 
-
-for(let i = 0; i < 40; i++) {
+shuffledNumbers.forEach((value, index) => {
     var element = document.createElement('div')
-    element.innerHTML = i + 1
-    element.id = i
+    element.innerHTML = emojiList[value]
+    element.id = index
     element.className = 'card'
     gameBoard.appendChild(element)
-    console.log(i)
-}
+    console.log(index)
+})
 
 
 
