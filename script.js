@@ -43,7 +43,7 @@ console.log(shuffledNumbers)
 
 shuffledNumbers.forEach((value, index) => {
     var element = document.createElement('div')
-    element.innerHTML = `<span class='hidden' id='${value}'>
+    element.innerHTML = `<span class='hidden' id='e${value}'>
             ${emojiList[value]}
         </span>`
     element.id = index
@@ -55,16 +55,13 @@ shuffledNumbers.forEach((value, index) => {
 let allCards = document.querySelectorAll('.card')
 
 allCards.forEach(element => {
-    element.addEventListener('click', () => flipCard(element))
+    element.addEventListener('click', flipCard)
 })
 
 function unflipCards() {
     allCards.forEach(element => {
-        let emoji = element.firstChild
-        if (emoji.classList == 'checked') {
-            return
-        } else {
-            emoji.classList = 'hidden'
+        if (element.classList != 'card checked') {
+            element.firstChild.classList = 'hidden'
         }
     })
 }
@@ -73,7 +70,9 @@ let flipedTimes = 0
 let flipedCards = []
 let firstFlipCard = ''
 
-function flipCard(element) {
+function flipCard(event) {
+    let element = event.target
+    
     if (flipedTimes >= 2){
         return
     }
@@ -96,15 +95,20 @@ function flipCard(element) {
     setTimeout(() => {
         if (flipedTimes >= 2) {
             flipedTimes = 0
-            unflipCards()
             checkPoints(flipedCards)
+            unflipCards()
         }
     },1000)
 }
 
 function checkPoints(Cards) {
-    if (Cards[0] == Cards[1]) {
-        
+    if (Cards[0] === Cards[1]) {
+        document.querySelectorAll(`#${Cards[0]}`)
+            .forEach((element) => {
+                element.parentNode.classList = 'card checked'
+                element.parentNode.removeEventListener('click', flipCard)
+                console.log(element)
+            })
     }
     flipedCards = []
 }

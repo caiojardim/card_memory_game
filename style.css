@@ -26,3 +26,7 @@ h1 {
 .card span.hidden {
     visibility: hidden;
 }
+
+.checked {
+    opacity: .5;
+}
