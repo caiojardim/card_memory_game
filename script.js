@@ -50,7 +50,14 @@ shuffledNumbers.forEach((value, index) => {
     console.log(index)
 })
 
+document.querySelectorAll('.card')
+    .forEach(element => {
+        element.addEventListener('click', () => flipCard(element))
+    })
 
-
+function flipCard(element) {
+    let emoji = element.firstChild
+    emoji.classList = ''
+}
 
 
