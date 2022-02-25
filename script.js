@@ -43,21 +43,68 @@ console.log(shuffledNumbers)
 
 shuffledNumbers.forEach((value, index) => {
     var element = document.createElement('div')
-    element.innerHTML = `<span class='hidden'>${emojiList[value]}</span>`
+    element.innerHTML = `<span class='hidden' id='${value}'>
+            ${emojiList[value]}
+        </span>`
     element.id = index
     element.className = 'card'
     gameBoard.appendChild(element)
     console.log(index)
 })
 
-document.querySelectorAll('.card')
-    .forEach(element => {
-        element.addEventListener('click', () => flipCard(element))
-    })
+let allCards = document.querySelectorAll('.card')
 
-function flipCard(element) {
-    let emoji = element.firstChild
-    emoji.classList = ''
+allCards.forEach(element => {
+    element.addEventListener('click', () => flipCard(element))
+})
+
+function unflipCards() {
+    allCards.forEach(element => {
+        let emoji = element.firstChild
+        if (emoji.classList == 'checked') {
+            return
+        } else {
+            emoji.classList = 'hidden'
+        }
+    })
 }
 
+let flipedTimes = 0
+let flipedCards = []
+let firstFlipCard = ''
 
+function flipCard(element) {
+    if (flipedTimes >= 2){
+        return
+    }
+    let emoji = element.firstChild
+    emoji.classList = ''
+    flipedTimes += 1
+
+    if (flipedTimes == 1) {
+        firstFlipCard = element.id
+        console.log(firstFlipCard)
+    } else {
+        if (firstFlipCard == element.id) {
+            flipedTimes = 1
+            return
+        }
+    }
+
+    flipedCards.push(emoji.id)
+    console.log(flipedCards)
+    setTimeout(() => {
+        if (flipedTimes >= 2) {
+            flipedTimes = 0
+            unflipCards()
+            checkPoints(flipedCards)
+        }
+    },1000)
+}
+
+function checkPoints(Cards) {
+    if (Cards[0] == Cards[1]) {
+        
+    }
+    flipedCards = []
+}
