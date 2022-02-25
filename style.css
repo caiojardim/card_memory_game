@@ -1,0 +1,25 @@
+body {
+    background-color: #dfdfdf;
+}
+
+h1 {
+    text-align: center;
+}
+
+.game-board {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    margin: 0 1rem;
+}
+
+.card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: .8rem;
+    margin: .2rem;
+    border: 1.5px solid #111;
+    font-size: 1.5rem;
+    border-radius: .25rem;
+    background-color: #bbb;
+}
