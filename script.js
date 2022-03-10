@@ -98,7 +98,7 @@ function flipCard(event) {
             checkPoints(flipedCards)
             unflipCards()
         }
-    },1000)
+    },1200)
 }
 
 function checkPoints(Cards) {

@@ -1,14 +1,24 @@
 body {
-    background-color: #dfdfdf;
+    background-color: #121214;
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+}
+
+@media (max-width: 720px) {
+    html {
+        font-size: 87.5%
+    }
 }
 
 h1 {
     text-align: center;
+    line-height: 2rem;
 }
 
 .game-board {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
+    gap: .45rem;
     margin: 0 1rem;
 }
 
@@ -16,13 +26,14 @@ h1 {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: .8rem;
-    margin: .2rem;
-    border: 1.5px solid #111;
-    font-size: 1.5rem;
-    border-radius: .25rem;
-    background-color: #bbb;
+    padding: .3rem 1rem;
+    
+    border: 0;
+    font-size: 2.5rem;
+    border-radius: .5rem;
+    background-color: #202024;
 }
+
 .card span.hidden {
     visibility: hidden;
 }
